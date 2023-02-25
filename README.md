@@ -1,4 +1,4 @@
-#Film Query APPO
+#Film Query App
 
 ## Description
 
@@ -6,4 +6,5 @@
 Java, SQL, Maven, Eclipse
 
 ## Lessons Learned
+
 # FilmQueryProject

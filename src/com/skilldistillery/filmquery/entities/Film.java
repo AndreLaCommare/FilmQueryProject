@@ -15,7 +15,7 @@ public class Film {
 	private Double replacementCost;
 	private String rating;
 	private String specialFeatures;
-	
+	private String language;
 	private List<Actor> cast;
 	
 	public Film(int filmId, String title, String desc, Integer releaseYear, int langId, 
@@ -31,6 +31,7 @@ public class Film {
 		replacementCost = repCost;
 		this.rating = rating;
 		specialFeatures = features;
+		
 	}
 
 	public int getId() {
@@ -121,6 +122,26 @@ public class Film {
 		this.specialFeatures = specialFeatures;
 	}
 
+	
+	
+	public List<Actor> getCast() {
+		return cast;
+	}
+
+	public void setCast(List<Actor> cast) {
+		this.cast = cast;
+	}
+	
+	
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -140,15 +161,16 @@ public class Film {
 
 	@Override
 	public String toString() {
-		return "Film [id=" + id + ", " + (title != null ? "title=" + title + ", " : "")
-				+ (description != null ? "description=" + description + ", " : "")
-				+ (releaseYear != null ? "releaseYear=" + releaseYear + ", " : "") + "languageId=" + languageId
-				+ ", rentalDuration=" + rentalDuration + ", rentalRate=" + rentalRate + ", "
-				+ (length != null ? "length=" + length + ", " : "")
-				+ (replacementCost != null ? "replacementCost=" + replacementCost + ", " : "")
-				+ (rating != null ? "rating=" + rating + ", " : "")
-				+ (specialFeatures != null ? "specialFeatures=" + specialFeatures : "") + "]";
+		return   (title != null ? "Film title: " + title + ", " : "")
+				+ (releaseYear != null ? "Release Year:" + releaseYear + ", " : "") 
+				+ (description != null ? "description: " + description + ", " : "")
+				+ (rating != null ? "Rating:" + rating + ", " : "")
+				+ (language != null ? "Language:" + language + ", " : "") + (cast != null ? "Cast: " + cast : "");
 	}
+
+	
+
+	
 	
 	
 }
