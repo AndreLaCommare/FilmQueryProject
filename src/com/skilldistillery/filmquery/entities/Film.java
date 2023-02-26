@@ -165,7 +165,8 @@ public class Film {
 				+ (releaseYear != null ? "Release Year:" + releaseYear + ", " : "") 
 				+ (description != null ? "description: " + description + ", " : "")
 				+ (rating != null ? "Rating:" + rating + ", " : "")
-				+ (language != null ? "Language:" + language + ", " : "") + (cast != null ? "Cast: " + cast : "");
+				+ (language != null ? "Language:" + language + ", " : "")
+				+ (cast != null ? "Cast: " + cast : "");
 	}
 
 	

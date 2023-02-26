@@ -46,7 +46,7 @@ public class FilmQueryApp {
 		while (!(userInput.equals("0"))) {
 			System.out.println("Welcome to the Film Query App:");
 			System.out.println("Please select an option, or 0 to exit.");
-			System.out.println("1.) Look up a film by it ID.");
+			System.out.println("1.) Look up a film by its ID.");
 			System.out.println("2.) Look up a film by a search keyword.");
 			userInput = input.nextLine();
 			switch (userInput) {
