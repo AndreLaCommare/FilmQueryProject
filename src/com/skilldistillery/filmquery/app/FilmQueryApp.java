@@ -55,8 +55,8 @@ public class FilmQueryApp {
 				break;
 			case "1":
 				System.out.println("Enter a film id:");
-				userInput = input.nextLine();
-				int filmId = Integer.parseInt(userInput);
+				String userInput2 = input.nextLine();
+				int filmId = Integer.parseInt(userInput2);
 				if (db.findFilmById(filmId) != (null)) {
 					System.out.println(db.findFilmById(filmId));
 					
@@ -66,9 +66,9 @@ public class FilmQueryApp {
 				break;
 			case "2":
 				System.out.println("Please enter a keyword/phrase to search for in film title or description:");
-				userInput = input.nextLine();
-				if (!(db.findFilmsByKeyword(userInput).isEmpty())){
-					System.out.println(db.findFilmsByKeyword(userInput));
+				String userInput3 = input.nextLine();
+				if (!(db.findFilmsByKeyword(userInput3).isEmpty())){
+					System.out.println(db.findFilmsByKeyword(userInput3));
 				}else {
 					System.out.println("There are no films with any such keyword");
 				}
