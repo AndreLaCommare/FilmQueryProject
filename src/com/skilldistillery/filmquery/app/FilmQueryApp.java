@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
+import com.mysql.cj.protocol.x.SyncFlushDeflaterOutputStream;
 import com.skilldistillery.filmquery.database.DatabaseAccessor;
 import com.skilldistillery.filmquery.database.DatabaseAccessorObject;
 import com.skilldistillery.filmquery.entities.Actor;
@@ -19,9 +20,9 @@ public class FilmQueryApp {
 		app.launch();
 	}
 
-	private void test() throws SQLException {
-		Film film = db.findFilmById(23);
-		System.out.println(film);
+	//private void test() throws SQLException {
+//		Film film = db.findFilmById(23);
+//		System.out.println(film);
 //	Actor anActor = db.findActorById(1);
 //	System.out.println(anActor);
 //    List<Film> actorFilms = db.findFilmsByActorId(13);
@@ -31,7 +32,7 @@ public class FilmQueryApp {
 //    List<Actor> actorsInThisFilm = db.findActorsByFilmId(13);
 //    System.out.println(actorsInThisFilm.size());
 //    System.out.println(actorsInThisFilm);
-	}
+	//}
 
 	private void launch() {
 		Scanner input = new Scanner(System.in);
@@ -58,27 +59,56 @@ public class FilmQueryApp {
 				String userInput2 = input.nextLine();
 				int filmId = Integer.parseInt(userInput2);
 				if (db.findFilmById(filmId) != (null)) {
-					System.out.println(db.findFilmById(filmId));
-					
+					findFilmByIDFormat(db.findFilmById(filmId));
+
 				} else {
 					System.out.println("There is no such film.");
+					System.out.println();
 				}
 				break;
 			case "2":
 				System.out.println("Please enter a keyword/phrase to search for in film title or description:");
 				String userInput3 = input.nextLine();
-				if (!(db.findFilmsByKeyword(userInput3).isEmpty())){
-					System.out.println(db.findFilmsByKeyword(userInput3));
-				}else {
+				if (!(db.findFilmsByKeyword(userInput3).isEmpty())) {
+
+					filmByKeywordFormat(db.findFilmsByKeyword(userInput3));
+				} else {
 					System.out.println("There are no films with any such keyword");
+					System.out.println();
 				}
-				break;				
+				break;
 
 			default:
 				System.out.println("Invalid Option, Please Select Again");
+				System.out.println();
 				break;
 			}
 		}
+
+	}
+
+	private void filmByKeywordFormat(List<Film> filmList) {
+		for (int i = 0; i < filmList.size(); i++) {
+
+			System.out.println("Film Title: " + filmList.get(i).getTitle() +
+					"	Release Year: "+ filmList.get(i).getReleaseYear() + 
+					"	Language: " + filmList.get(i).getLanguage() +
+					"	Rating: " + filmList.get(i).getRating());
+			System.out.println("Description: " + filmList.get(i).getDescription());
+			System.out.println("Cast: " + filmList.get(i).getCast());
+			System.out.println();
+
+		}
+	}
+	
+	private void findFilmByIDFormat(Film film) {
+		System.out.println("Film Title: " + film.getTitle() +
+				"	Release Year: "+ film.getReleaseYear() + 
+				"	Language: " + film.getLanguage() +
+				"	Rating: " + film.getRating());
+		System.out.println("Description: " + film.getDescription());
+		System.out.println("Cast: " + film.getCast());
+		System.out.println();
 	}
 
 }
